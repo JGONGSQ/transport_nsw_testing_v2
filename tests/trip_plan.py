@@ -4,16 +4,24 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import unittest
+import requests
+import json
 
 
 class TripPlanTests(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
+        self.stop_api_url = "http://www.transportnsw.info/web/XML_STOPFINDER_REQUEST" \
+                            "?TfNSWSF=true" \
+                            "&language=en" \
+                            "&name_sf={stopname}" \
+                            "&outputFormat=rapidJSON" \
+                            "&type_sf=any" \
+                            "&version=10.2.2.48"
 
-    def _teardown(self):
+    def tearDown(self):
         self.driver.quit()
-        return
 
     def _input_text(self, input_id, text, dropdown_id=None):
         input_element = self.driver.find_element_by_id(input_id)
@@ -53,8 +61,24 @@ class TripPlanTests(unittest.TestCase):
 
         # Then a list of trips should be provided
         results = self._should_be_visible(id_value="tp-result-list")
-        self._teardown()
-        assert(results)
+        self.assertTrue(results)
+
+    def test_stop_finder_api(self):
+        # object station
+        stopanme = "Wynyard Station"
+
+        # form the url
+        full_reuqest_url = self.stop_api_url.format(stopname=stopanme)
+
+        # get the url via requests package
+        response = requests.get(full_reuqest_url).json()
+
+        # compare the name
+        self.assertEqual(response['locations'][0]['name'], "Wynyard Station, Sydney")
+
+        # compare the number of travel modes
+        self.assertTrue(len(response['locations'][0]['modes']) > 1)
+
 
 
 if __name__ == "__main__":
