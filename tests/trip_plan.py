@@ -79,6 +79,5 @@ class TripPlanTests(unittest.TestCase):
         self.assertTrue(len(response['locations'][0]['modes']) > 1)
 
 
-
 if __name__ == "__main__":
     unittest.main()
