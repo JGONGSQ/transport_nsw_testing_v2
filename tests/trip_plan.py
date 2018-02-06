@@ -67,10 +67,10 @@ class TripPlanTests(unittest.TestCase):
         stopanme = "Wynyard Station"
 
         # form the url
-        full_reuqest_url = self.stop_api_url.format(stopname=stopanme)
+        full_request_url = self.stop_api_url.format(stopname=stopanme)
 
         # get the url via requests package
-        response = requests.get(full_reuqest_url).json()
+        response = requests.get(full_request_url).json()
 
         # compare the name
         self.assertEqual(response['locations'][0]['name'], "Wynyard Station, Sydney")
