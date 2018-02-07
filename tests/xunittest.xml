@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="nosetests" tests="2" errors="0" failures="0" skip="0">
+    <testcase classname="tests.trip_plan.TripPlanTests" name="test_make_a_trip_plan" time="13.623"></testcase>
+    <testcase classname="tests.trip_plan.TripPlanTests" name="test_stop_finder_api" time="3.557"></testcase>
+</testsuite>
