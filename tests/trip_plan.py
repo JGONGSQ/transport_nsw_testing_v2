@@ -13,13 +13,6 @@ class TripPlanTests(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
-        self.stop_api_url = "http://www.transportnsw.info/web/XML_STOPFINDER_REQUEST" \
-                            "?TfNSWSF=true" \
-                            "&language=en" \
-                            "&name_sf={stopname}" \
-                            "&outputFormat=rapidJSON" \
-                            "&type_sf=any" \
-                            "&version=10.2.2.48"
 
     def tearDown(self):
         self.driver.quit()
@@ -38,6 +31,18 @@ class TripPlanTests(unittest.TestCase):
 
         # Then a list of trip should bbe provided
         self.assertTrue(trip_plan_page.results_list_should_be_visible())
+
+
+class StopFinderTests(unittest.TestCase):
+
+    def setUp(self):
+        self.stop_api_url = "http://www.transportnsw.info/web/XML_STOPFINDER_REQUEST" \
+                            "?TfNSWSF=true" \
+                            "&language=en" \
+                            "&name_sf={stopname}" \
+                            "&outputFormat=rapidJSON" \
+                            "&type_sf=any" \
+                            "&version=10.2.2.48"
 
     def test_stop_finder_api(self):
         # object station
