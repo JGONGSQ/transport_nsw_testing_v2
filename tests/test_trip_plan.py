@@ -1,12 +1,14 @@
-import sys
 import os.path
+import sys
+
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from tests.settings import BASE_URL
+from settings import BASE_URL
 from selenium import webdriver
 from pages.trip_plan_page import TripPlanPage
 import unittest
 import requests
+import HtmlTestRunner
 
 
 class TripPlanTests(unittest.TestCase):
@@ -62,4 +64,4 @@ class StopFinderTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='TripPlan'))
