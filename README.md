@@ -13,9 +13,15 @@ Generate the html report
 
 ```
 
-Run all test case
+Run all testing cases
 ```
 "python -m unittest discover tests"
+
+```
+
+Run all testing cases
+```
+"python runner.py"
 
 ```
 
