@@ -1,6 +1,6 @@
-from base_page import BasePage
-from elements import BasePageElement
-from locators import MainPageLocators
+from pages.base_page import BasePage
+from pages.elements import BasePageElement
+from pages.locators import MainPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
