@@ -2,7 +2,7 @@ import sys
 import os.path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from settings import BASE_URL
+from tests.settings import BASE_URL
 from selenium import webdriver
 from pages.trip_plan_page import TripPlanPage
 import unittest
